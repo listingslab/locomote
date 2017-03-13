@@ -116,7 +116,7 @@ class InputControls {
     // Validate form and then start the search
     if (this.validateFromAirport() && this.validateToAirport()) {
       if (this.validateDate()) {
-        this.app.api.startSearch();
+        this.app.api.searchFlights();
       }
     }
     return false;

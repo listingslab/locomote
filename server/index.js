@@ -39,6 +39,7 @@ app.route('*')
 require('./endpoints/health')(app);
 require('./endpoints/airlines')(app);
 require('./endpoints/airports')(app);
+require('./endpoints/flight_search')(app);
 
 
 app.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {

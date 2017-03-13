@@ -11,15 +11,33 @@ class Api {
     const airlinesPromise = $.get('/airlines');
     $.when(airlinesPromise).done(function (airlines) {
       this.airlines = airlines;
-      $('#tabs').html(this.airlines[0].name);
-    });
+    }.bind(this));
   }
 
-  startSearch() {
+  searchFlights() {
     if (!this.searching) {
-      $('#btn-search-flight').attr('disabled', 'disabled');
       this.searching = true;
-      this.app.tabs.startTabs(this.getQuery());
+      $('#btn-search-flight').attr('disabled', 'disabled');
+      const query = this.getQuery();
+      this.app.tabs.startTabs(query);
+      let numCalls = this.airlines.length;
+      const flightsArr = [];
+      for (let i = 0; i < this.airlines.length; i += 1) {
+        $.getJSON(
+          `/flight_search/${this.airlines[i].code}?date=${query.date}&from=${query.from}&to=${query.to}`,
+          function (flights) {
+            for (let j = 0; j < flights.length; j += 1) {
+              flightsArr.push(flights[j]);
+            }
+            numCalls -= 1;
+            if (numCalls === 0) {
+              console.log('DONE!!! ' + this.searching);
+              $('#btn-search-flight').removeAttr("disabled");
+              this.searching = false;
+            }
+          }.bind(this)
+        );
+      }
     }
   }
 
