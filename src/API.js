@@ -17,9 +17,10 @@ class Api {
   searchFlights() {
     if (!this.searching) {
       this.searching = true;
+      this.app.results.hideTabs();
+      this.app.results.showLoader();
       $('#btn-search-flight').attr('disabled', 'disabled');
       const query = this.getQuery();
-      this.app.tabs.startTabs(query);
       let numCalls = this.airlines.length;
       const flightsArr = [];
       for (let i = 0; i < this.airlines.length; i += 1) {
@@ -31,8 +32,8 @@ class Api {
             }
             numCalls -= 1;
             if (numCalls === 0) {
-              this.app.table.startTable(flightsArr);
-              $('#btn-search-flight').removeAttr("disabled");
+              this.app.results.renderResults(query, flightsArr);
+              $('#btn-search-flight').removeAttr('disabled');
               this.searching = false;
             }
           }.bind(this)

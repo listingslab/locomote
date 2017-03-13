@@ -21,6 +21,7 @@ module.exports = {
     "prefer-arrow-callback": 0,
     "object-property-newline": 0,
     "no-nested-ternary": 0,
+    "no-loop-func": 0,
     "no-console": 0,
     "no-prototype-builtins": 0,
     "class-methods-use-this": 0,

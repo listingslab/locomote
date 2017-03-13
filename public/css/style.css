@@ -46,14 +46,21 @@ body {
     text-align:center;
 }
 
-.tab-pane{
+#loader, .tab-pane {
   text-align: center;
+}
+.loader-img {
+  margin-top: 15px;
 }
 
 .tab-pane td{
   text-align: left;
 }
 
-.loader {
-  margin-top: 50px;
+.sorted-by {
+  margin-top: 10px;
+}
+
+#results {
+  visibility: hidden;
 }
