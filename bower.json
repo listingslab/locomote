@@ -1,0 +1,21 @@
+{
+  "name": "locomote",
+  "description": "Flight search interface for Locomote JavaScript coding task",
+  "main": "start.js",
+  "authors": "listingslab <listingslab@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "moment": "^2.17.1",
+    "bs-typeahead": "^0.0.5"
+  }
+}

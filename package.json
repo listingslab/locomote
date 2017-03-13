@@ -1,12 +1,47 @@
 {
-  "name": "openshift-cartridge-nodejs-template",
-  "version": "1.0.1",
-  "description": "Custom Node.js cartridge for OpenShift - sample application",
+  "name": "locomote",
+  "version": "1.0.3",
+  "description": "Flight search interface for Locomote JavaScript coding task",
   "private": true,
   "main": "start.js",
   "scripts": {
-    "start": "node --use_strict start.js"
+    "start": "node start.js",
+    "dev": "webpack --watch",
+    "open": "concurrently \"node start.js\" \"open http://localhost:3000\""
   },
-  "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locomote"
+  },
+  "author": "listingslab <listingslab@gmail.com>",
+  "contributors": [
+    {
+      "name": "Chris Dorward",
+      "email": "listingslab@gmail.com"
+    }
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "concurrently": "^3.4.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-friendly-formatter": "^2.0.6",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.10.0",
+    "open": "0.0.5"
+  },
+  "dependencies": {
+    "koa": "^1.2.0",
+    "koa-better-body": "^1.0.17",
+    "koa-request": "^1.0.0",
+    "koa-routing": "^1.3.1",
+    "koa-static-server": "^1.0.0",
+    "webpack": "^2.2.1"
+  }
 }

@@ -1,3 +1,10 @@
+/**
+ * Created by Chris Dorward on 12/03/2017
+ * /start.js
+ * Openshift boilerplate for starting up the node app on
+ * http://locomote-listingslab.rhcloud.com/
+ */
+
 const cluster = require('cluster'),
       stopSignals = [
         'SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
@@ -19,7 +26,7 @@ cluster.on('disconnect', function(worker) {
 
 if (cluster.isMaster) {
   const workerCount = process.env.NODE_CLUSTER_WORKERS || 4;
-  console.log(`Starting ${workerCount} workers...`);
+  console.log('~~~~~~~~~~~| Listening on port 3000 |~~~~~~~~~~~');
   for (let i = 0; i < workerCount; i++) {
     cluster.fork();
   }
@@ -36,5 +43,5 @@ if (cluster.isMaster) {
     });
   }
 } else {
-  require('./app.js');
+  require('./server/index.js');
 }

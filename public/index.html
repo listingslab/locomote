@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Locomote JS code task</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!--
+    Try a different Bootswatch theme
+    Default, Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Paper, Readable, Sandstone
+    Simplex, Slate, Solar, Spacelab, Superhero, United, Yeti
+    -->
+    <link rel="stylesheet" href="css/bootswatch/bootswatch.Darkly.min.css">
+    <link href="vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img
+              alt="Locomote Flight Search Logo"
+              src="img/locomote_32.png"
+            />
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="http://node.locomote.com/code-task/"
+                target="_blank">Task Brief</a>
+            </li>
+            <li>
+              <a
+                href="http://github.com/listingslab"
+                target="_blank"
+              >Github</a>
+            </li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false">More JS Examples
+                <span class="caret"></span>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Aligent Craft Beer Challenge (React)</li>
+                <li>
+                  <a
+                    href="http://jqueryresume.com/"
+                    target="_blank"
+                  >Application</a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/listingslab/aligent-beer-challenge"
+                    target="_blank"
+                  >Github</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Huawei (React)</li>
+                <li>
+                  <a
+                    href="http://huawei-listingslab.rhcloud.com/"
+                    target="_blank"
+                  >Application</a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/listingslab/huawei"
+                    target="_blank"
+                  >Github</a>
+                </li>
+
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Kochart (Symphony &amp; Knockout)</li>
+                <li>
+                  <a
+                    href="http://kochart-listingslab.rhcloud.com/"
+                    target="_blank"
+                  >Application</a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/listingslab/kochart"
+                    target="_blank"
+                  >Github</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div id="locomote" class="container">
+      <div class="container jumbotron">
+
+        <form class="form-horizontal" id="flight-search-form" autocomplete="off">
+
+          <div class="form-group has-feedback">
+            <label for="input-airport-from" class="col-sm-2 control-label">Flying from</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="input-airport-from"
+                placeholder="Select airport"
+                data-error="Please select a departure airport"
+              >
+            </div>
+          </div>
+
+          <div class="form-group has-feedback">
+            <label for="input-airport-to" class="col-sm-2 control-label">Flying to</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="input-airport-to"
+                placeholder="Select airport"
+              >
+            </div>
+          </div>
+
+          <div class="form-group has-feedback">
+            <label for="flight-date" class="col-sm-2 control-label">Flying on</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="flight-date"
+                placeholder="Select date"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button
+                type="submit"
+                id="btn-search-flight"
+                class="btn btn-group-justified btn-default">Search Flights</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="container">
+        <div class="row" id="search-results" />
+      </div>
+    </div>
+
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/moment/min/moment.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/bs-typeahead/js/bootstrap-typeahead.min.js"></script>
+    <script src="vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="locomote.min.js"></script>
+
+  </body>
+</html>
