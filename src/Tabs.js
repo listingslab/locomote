@@ -11,7 +11,6 @@ class Tabs {
 
   startTabs() {
     this.clearTabs();
-    // get
     this.renderTabs();
   }
 

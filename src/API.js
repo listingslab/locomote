@@ -1,18 +1,31 @@
 /**
  * Created by Chris Dorward on 13/03/2017
- * src/API
+ * src/Api
  */
 
-class API {
+class Api {
 
   constructor(app) {
     this.app = app;
+    this.searching = false;
   }
 
-  startAPI() {
-    console.log('startAPI');
+  startSearch() {
+    console.log('Starting Search');
+    if (!this.searching) {
+      this.searching = true;
+      console.log(this.getQuery());
+    }
   }
 
+  getQuery() {
+    const query = {
+      from: $('#input-airport-from').val().substr(1,3),
+      to: $('#input-airport-to').val().substr(1,3),
+      date: $('#flight-date').val()
+    }
+    return query;
+  }
 }
 
-export default API;
+export default Api;

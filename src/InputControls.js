@@ -54,6 +54,7 @@ class InputControls {
     // Setup the date picker for the flight
     const date = new Date();
     const today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    // MMMM Do YYYY
     $('#flight-date').datetimepicker({
       format: 'YYYY-MM-DD',
       minDate: today
@@ -85,7 +86,6 @@ class InputControls {
     } else {
       fromAirportValid = false;
       $('#input-airport-from').addClass('input-error');
-      $('#input-airport-from').focus();
     }
     return fromAirportValid;
   }
@@ -97,7 +97,6 @@ class InputControls {
     } else {
       toAirportValid = false;
       $('#input-airport-to').addClass('input-error');
-      $('#input-airport-to').focus();
     }
     return toAirportValid;
   }
@@ -117,11 +116,11 @@ class InputControls {
     // Validate form and then start the search
     if (this.validateFromAirport() && this.validateToAirport()) {
       if (this.validateDate()) {
-        this.app.tabs.startTabs();
+        this.app.api.startSearch();
       }
     }
+    return false;
   }
-
 }
 
 export default InputControls;
