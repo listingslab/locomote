@@ -45,3 +45,11 @@ body {
 .nav-tabs, .nav-pills {
     text-align:center;
 }
+
+.tab-pane{
+  text-align: center;
+}
+
+.loader {
+  margin-top: 50px;
+}

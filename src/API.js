@@ -8,22 +8,27 @@ class Api {
   constructor(app) {
     this.app = app;
     this.searching = false;
+    const airlinesPromise = $.get('/airlines');
+    $.when(airlinesPromise).done(function (airlines) {
+      this.airlines = airlines;
+      $('#tabs').html(this.airlines[0].name);
+    });
   }
 
   startSearch() {
-    console.log('Starting Search');
     if (!this.searching) {
+      $('#btn-search-flight').attr('disabled', 'disabled');
       this.searching = true;
-      console.log(this.getQuery());
+      this.app.tabs.startTabs(this.getQuery());
     }
   }
 
   getQuery() {
     const query = {
-      from: $('#input-airport-from').val().substr(1,3),
-      to: $('#input-airport-to').val().substr(1,3),
+      from: $('#input-airport-from').val().substr(1, 3),
+      to: $('#input-airport-to').val().substr(1, 3),
       date: $('#flight-date').val()
-    }
+    };
     return query;
   }
 }
