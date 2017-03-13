@@ -50,6 +50,10 @@ body {
   text-align: center;
 }
 
+.tab-pane td{
+  text-align: left;
+}
+
 .loader {
   margin-top: 50px;
 }

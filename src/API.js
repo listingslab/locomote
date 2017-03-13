@@ -31,7 +31,7 @@ class Api {
             }
             numCalls -= 1;
             if (numCalls === 0) {
-              console.log('DONE!!! ' + this.searching);
+              this.app.table.startTable(flightsArr);
               $('#btn-search-flight').removeAttr("disabled");
               this.searching = false;
             }

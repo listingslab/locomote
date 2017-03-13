@@ -5,11 +5,13 @@
 
 import Api from './Api';
 import InputControls from './InputControls';
+import Table from './Table';
 import Tabs from './Tabs';
 
 $(document).ready(function () {
   const app = {};
   app.api = new Api(app);
+  app.table = new Table(app);
   app.tabs = new Tabs(app);
   app.inputControls = new InputControls(app);
 });
