@@ -1,12 +1,13 @@
 /**
  * Created by Chris Dorward on 12/03/2017
- * app/main
+ * src/Main
  */
 
 import InputControls from './InputControls';
-import SearchFlights from './SearchFlights';
+import Tabs from './Tabs';
 
-const app = {};
-
-app.flights = new SearchFlights(app);
-app.controls = new InputControls(app);
+$(document).ready(function () {
+  const app = {};
+  app.tabs = new Tabs(app);
+  app.inputControls = new InputControls(app);
+});

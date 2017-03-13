@@ -1,23 +1,21 @@
 /**
  * Created by Chris Dorward on 12/03/2017
- * src/searchFlights
+ * src/Tabs
  */
 
-class SearchFlights {
+class Tabs {
 
   constructor(app) {
     this.app = app;
   }
 
-  startSearch() {
-    this.clearResults();
+  startTabs() {
+    this.clearTabs();
+    // get
     this.renderTabs();
-    // const from = $('#input-airport-from').val();
-    console.log('SEARCHING');
   }
 
   renderTabs() {
-    // const date = 'daugdous feouhu';
     const tabs = `
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation">
@@ -55,13 +53,12 @@ class SearchFlights {
         </div>
       </div>
     `;
-
-    $('#search-results').html(tabs);
+    $('#tabs').html(tabs);
   }
 
-  clearResults() {
+  clearTabs() {
     $('#search-results').html('');
   }
 }
 
-export default SearchFlights;
+export default Tabs;

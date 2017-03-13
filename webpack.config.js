@@ -7,7 +7,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/Main.js',
     output: {
         path: __dirname,
         filename: './public/locomote.min.js'

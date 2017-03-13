@@ -15,7 +15,7 @@ class InputControls {
   setupTypeaheads() {
     // Setup the Airport selector typeaheads
     $('#input-airport-from').typeahead({
-      onSelect(item) {
+      onSelect() {
         $('#input-airport-to').focus();
       },
       ajax: {
@@ -29,11 +29,11 @@ class InputControls {
       }
     });
     $('#input-airport-from').change(function () {
-      this.validateForm(false);
+      this.validateFromAirport();
     }.bind(this));
 
     $('#input-airport-to').typeahead({
-      onSelect(item) {
+      onSelect() {
         $('#flight-date').focus();
       },
       ajax: {
@@ -46,7 +46,7 @@ class InputControls {
       }
     });
     $('#input-airport-to').change(function () {
-      this.validateForm(false);
+      this.validateToAirport();
     }.bind(this));
   }
 
@@ -58,61 +58,70 @@ class InputControls {
       format: 'YYYY-MM-DD',
       minDate: today
     });
-    $('#flight-date').on('dp.change', function (e) {
-      this.validateForm(false);
+    $('#flight-date').on('dp.hide', function () {
       $('#btn-search-flight').focus();
-    }.bind(this));
+    });
   }
 
   setupFormSubmit() {
     // Setup form submission on enter key press and form submit
     document.onkeydown = function pressEnter() {
       if (window.event.keyCode === '13') {
-        this.validateForm(true);
+        this.submitForm();
         return false;
       }
       return true;
     }.bind(this);
     $('#flight-search-form').on('submit', function () {
-      this.validateForm(true);
+      this.submitForm();
       return false;
     }.bind(this));
   }
 
-  validateForm(searchIfValid) {
-    // Validate form and set or remove error classes then start the search if searchIfValid
-    let isValid = true;
+  validateFromAirport() {
+    let fromAirportValid = true;
+    if ($('#input-airport-from').val()[0] === '(' && $('#input-airport-from').val()[4] === ')') {
+      $('#input-airport-from').removeClass('input-error');
+    } else {
+      fromAirportValid = false;
+      $('#input-airport-from').addClass('input-error');
+      $('#input-airport-from').focus();
+    }
+    return fromAirportValid;
+  }
 
-    const dateVal = $('#flight-date').val();
-    if (dateVal === '') {
-      isValid = false;
+  validateToAirport() {
+    let toAirportValid = true;
+    if ($('#input-airport-to').val()[0] === '(' && $('#input-airport-to').val()[4] === ')') {
+      $('#input-airport-to').removeClass('input-error');
+    } else {
+      toAirportValid = false;
+      $('#input-airport-to').addClass('input-error');
+      $('#input-airport-to').focus();
+    }
+    return toAirportValid;
+  }
+
+  validateDate() {
+    let dateValid = true;
+    if ($('#flight-date').val() === '') {
+      dateValid = false;
       $('#flight-date').addClass('input-error');
     } else {
       $('#flight-date').removeClass('input-error');
     }
+    return dateValid;
+  }
 
-    const toVal = $('#input-airport-to').val();
-    if (toVal[0] === '(' && toVal[4] === ')') {
-      $('#input-airport-to').removeClass('input-error');
-    } else {
-      isValid = false;
-      $('#input-airport-to').addClass('input-error');
-    }
-
-    const fromVal = $('#input-airport-from').val();
-    if (fromVal[0] === '(' && fromVal[4] === ')') {
-      $('#input-airport-from').removeClass('input-error');
-    } else {
-      isValid = false;
-      $('#input-airport-from').addClass('input-error');
-    }
-
-    if (isValid) {
-      if (searchIfValid) {
-        this.app.flights.startSearch();
+  submitForm() {
+    // Validate form and then start the search
+    if (this.validateFromAirport() && this.validateToAirport()) {
+      if (this.validateDate()) {
+        this.app.tabs.startTabs();
       }
     }
   }
+
 }
 
 export default InputControls;
