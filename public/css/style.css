@@ -57,8 +57,13 @@ body {
   text-align: left;
 }
 
-.sorted-by {
-  margin-top: 10px;
+.tab-para {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.search-bg {
+  background: #3b5b7d;
 }
 
 #results {

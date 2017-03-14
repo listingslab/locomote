@@ -24,13 +24,13 @@ class Results {
     return results;
   }
 
-  renderResults(query, results) {
+  renderResults(date, results, targetTab) {
     const sortedResults = this.sortByPrice(results);
-    $('#date1-label').html(moment(query.date).subtract(2, 'days').format('MMMM Do YYYY'));
-    $('#date2-label').html(moment(query.date).subtract(1, 'days').format('MMMM Do YYYY'));
-    $('#date3-label').html(moment(query.date).format('MMMM Do YYYY'));
-    $('#date4-label').html(moment(query.date).add(1, 'days').format('MMMM Do YYYY'));
-    $('#date5-label').html(moment(query.date).add(2, 'days').format('MMMM Do YYYY'));
+    $('#date1-label').html(moment(date).subtract(2, 'days').format('MMMM Do YYYY'));
+    $('#date2-label').html(moment(date).subtract(1, 'days').format('MMMM Do YYYY'));
+    $('#date3-label').html(moment(date).format('MMMM Do YYYY'));
+    $('#date4-label').html(moment(date).add(1, 'days').format('MMMM Do YYYY'));
+    $('#date5-label').html(moment(date).add(2, 'days').format('MMMM Do YYYY'));
     let rows = '';
     for (let i = 0; i < sortedResults.length; i += 1) {
       rows += `
@@ -44,14 +44,14 @@ class Results {
       `;
     }
     const table = `
-    <p class="sorted-by">(sorted by price ascending)</p>
+    <p class="tab-para">(sorted by price ascending)</p>
       <table class="table table-hover table-condensed table-striped">
         <tbody>
           ${rows}
         </tbody>
       </table>
     `;
-    $('#date3').html(table);
+    targetTab.html(table);
     this.hideLoader();
     this.showTabs();
   }
