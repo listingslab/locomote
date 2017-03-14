@@ -24,8 +24,6 @@ Then run
 
 ---
 
-## CSS (scss)
-
 ### Using Atom editor?
 
 Install IDE linting. It's proper helpful
