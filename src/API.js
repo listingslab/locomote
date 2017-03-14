@@ -17,10 +17,8 @@ class Api {
 
   makeAPICalls(query, targetTab) {
     let numCalls = this.airlines.length;
-    const date = $('#flight-date').val();
+    const date = moment($('#flight-date').datetimepicker('viewDate')).format('YYYY-MM-DD');
     const flightsArr = [];
-
-
     if (moment(query.date) >= moment().subtract(1, 'day')) {
       targetTab.html(`
       <img
@@ -56,10 +54,10 @@ class Api {
       $('#btn-search-flight').attr('disabled', 'disabled');
       const from = $('#input-airport-from').val().substr(1, 3);
       const to = $('#input-airport-to').val().substr(1, 3);
-      const date = $('#flight-date').val();
+      const date = moment($('#flight-date').datetimepicker('viewDate')).format('YYYY-MM-DD');
+      this.makeAPICalls({ from, to, date }, $('#date3'));
       this.makeAPICalls({ from, to, date: moment(date).subtract(2, 'days').format('YYYY-MM-DD') }, $('#date1'));
       this.makeAPICalls({ from, to, date: moment(date).subtract(1, 'days').format('YYYY-MM-DD') }, $('#date2'));
-      this.makeAPICalls({ from, to, date }, $('#date3'));
       this.makeAPICalls({ from, to, date: moment(date).add(1, 'days').format('YYYY-MM-DD') }, $('#date4'));
       this.makeAPICalls({ from, to, date: moment(date).add(2, 'days').format('YYYY-MM-DD') }, $('#date5'));
     }

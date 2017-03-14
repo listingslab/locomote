@@ -54,10 +54,10 @@ class InputControls {
     // Setup the date picker for the flight
     const date = new Date();
     const today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    // const minDate = moment(today).add(2, 'days')
     // MMMM Do YYYY
+    // YYYY-MM-DD
     $('#flight-date').datetimepicker({
-      format: 'YYYY-MM-DD',
+      format: 'Do MMMM YYYY',
       minDate: today
     });
     $('#flight-date').on('dp.hide', function () {

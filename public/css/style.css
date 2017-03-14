@@ -32,7 +32,8 @@ body {
 }
 
 .input-error{
-  border: 2px solid #d95f49;
+  border-bottom: 2px solid #d95f49;
+  background: white;
 }
 
 .nav-tabs > li, .nav-pills > li {

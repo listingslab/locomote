@@ -1,6 +1,6 @@
 {
   "name": "locomote",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Flight search interface for Locomote JavaScript coding task",
   "private": true,
   "main": "start.js",

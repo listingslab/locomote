@@ -26,18 +26,18 @@ class Results {
 
   renderResults(date, results, targetTab) {
     const sortedResults = this.sortByPrice(results);
-    $('#date1-label').html(moment(date).subtract(2, 'days').format('MMMM Do YYYY'));
-    $('#date2-label').html(moment(date).subtract(1, 'days').format('MMMM Do YYYY'));
-    $('#date3-label').html(moment(date).format('MMMM Do YYYY'));
-    $('#date4-label').html(moment(date).add(1, 'days').format('MMMM Do YYYY'));
-    $('#date5-label').html(moment(date).add(2, 'days').format('MMMM Do YYYY'));
+    $('#date1-label').html(moment(date).subtract(2, 'days').format('Do MMMM YYYY'));
+    $('#date2-label').html(moment(date).subtract(1, 'days').format('Do MMMM YYYY'));
+    $('#date3-label').html(moment(date).format('Do MMMM YYYY'));
+    $('#date4-label').html(moment(date).add(1, 'days').format('Do MMMM YYYY'));
+    $('#date5-label').html(moment(date).add(2, 'days').format('Do MMMM YYYY'));
     let rows = '';
     for (let i = 0; i < sortedResults.length; i += 1) {
       rows += `
       <tr>
-        <td><h4>$${sortedResults[i].price}</h4></td>
-        <td>${moment(sortedResults[i].start.dateTime).format('MMM Do YYYY<br />h:mm a')}</td>
-        <td>${sortedResults[i].airline.name}<br />${sortedResults[i].airline.code} ${sortedResults[i].flightNum}</td>
+        <td><strong>$${sortedResults[i].price}</strong></td>
+        <td>${moment(sortedResults[i].start.dateTime).format('Do MMMM YYYY h:mm a')}</td>
+        <td>${sortedResults[i].airline.name} ${sortedResults[i].airline.code} ${sortedResults[i].flightNum}</td>
         <td>${sortedResults[i].plane.shortName}</td>
         <td><button class="btn btn-sm btn-success pull-right">Book Flight</button></td>
       </tr>
