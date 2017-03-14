@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/listingslab/locomote/develop/public/img/locomote_256.png "Locomote FlightSearch Logo")
+![alt text](https://raw.githubusercontent.com/listingslab/locomote/master/public/img/locomote_256.png "Locomote FlightSearch Logo")
 # JavaScript coding task for Locomote (1.0.3)
 
 
